@@ -1,0 +1,21 @@
+name: Terraform
+on: push
+
+jobs:
+  format:
+    name: Format Check
+    runs-on: ubuntu-latest
+
+    defaults:
+      run:
+        working-directory: terraform
+
+    steps:
+      - uses: actions/checkout@main
+
+      - name: Terraform Format
+        run: terraform fmt -check
+
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v1
+
